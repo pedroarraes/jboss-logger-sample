@@ -191,3 +191,11 @@ formatter.PATTERN.properties=pattern
 formatter.PATTERN.constructorProperties=pattern
 formatter.PATTERN.pattern=%d %-5p %c: %m%n
 ```
+Attention for the properties
+* logger.level=${LOGGER.LEVEL:DEBUG} - Default value is DEBUG, but we can change this value difines a JBoss EAP System Properties 
+through the variable LOGGER.LEVEL.
+* handler.FILE.fileName=
+  * LOGGER.DIR:/var/log/jbosseap - Default value is /var/log/jbosseap, but we can change this value difines a JBoss EAP System Properties 
+through the variable LOGGER.DIR.
+  * LOGGER.APP_NAME:log4-sample - Default value is log4-sample, but we can change this value difines a JBoss EAP System Properties 
+through the variable LOGGER.APP_NAME.
