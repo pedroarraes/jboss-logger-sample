@@ -109,6 +109,21 @@ Output
 ```console
 <h1>Hello World from Acme Organizations!</h1>
 ```
+Log file
+```bash
+$ tail -f /var/log/jbosseap/log4-sample/log4-sample.log
+```
+Output
+```console
+2023-01-19 11:14:45,193 DEBUG org.acme.Hello: This is an example of a DEBUG log!
+2023-01-19 11:14:45,194 ERROR org.acme.Hello: This is an example of an ERROR log!
+2023-01-19 11:14:45,195 INFO  org.acme.Hello: This is an example of an INFO log!
+2023-01-19 11:14:45,195 WARN  org.acme.Hello: This is an example of a WARN log!
+2023-01-19 13:53:07,476 DEBUG org.acme.Hello: This is an example of a DEBUG log!
+2023-01-19 13:53:07,477 ERROR org.acme.Hello: This is an example of an ERROR log!
+2023-01-19 13:53:07,477 INFO  org.acme.Hello: This is an example of an INFO log!
+2023-01-19 13:53:07,477 WARN  org.acme.Hello: This is an example of a WARN log!
+```
 ## Understanding LOG configuration
 This section presents application source code, log properties and jboss eap system properties.
 
@@ -191,7 +206,7 @@ formatter.PATTERN.properties=pattern
 formatter.PATTERN.constructorProperties=pattern
 formatter.PATTERN.pattern=%d %-5p %c: %m%n
 ```
-Attention for the properties
+Attention for the properties:
 * logger.level=${LOGGER.LEVEL:DEBUG} - Default value is DEBUG, but we can change this value difines a JBoss EAP System Properties 
 through the variable LOGGER.LEVEL.
 * handler.FILE.fileName=
@@ -199,3 +214,18 @@ through the variable LOGGER.LEVEL.
 through the variable LOGGER.DIR.
   * LOGGER.APP_NAME:log4-sample - Default value is log4-sample, but we can change this value difines a JBoss EAP System Properties 
 through the variable LOGGER.APP_NAME.
+
+### Using JBoss EAP System Properties
+You can personalise ENV default values using JBoss EAP System properties. You can defines these values using web console or JBoss CLI. In bellow example we'll change the default LOGGER.DIR using JBoss CLI.
+Log file
+```bash
+$ ${JBOSS_HOME}/bin/.jboss-cli.sh -c
+[standalone@localhost:9990 /] /system-property=LOGGER.DIR:add(value=/mylogdir/mylogfile.log)
+{"outcome" => "success"}
+
+/system-property=LOGGER.DIR:read-resource
+{
+    "outcome" => "success",
+    "result" => {"value" => "/mylogdir/mylogfile.log"}
+}
+```
