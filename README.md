@@ -167,5 +167,27 @@ public class Hello extends HttpServlet {
 
 ### File logging.properties
 Below logging.properties, witch defines application log.
-```code
+```properties
+# Additional loggers to configure (the root logger is always configured)
+loggers=
+# Root logger configuration
+logger.level=${LOGGER.LEVEL:DEBUG}
+logger.handlers=FILE
+ 
+# A handler configuration
+handler.FILE=org.jboss.logmanager.handlers.FileHandler
+handler.FILE.level=${LOGGER.LEVEL:DEBUG}
+handler.FILE.formatter=PATTERN
+handler.FILE.properties=append,autoFlush,enabled,suffix,fileName
+handler.FILE.constructorProperties=fileName,append
+handler.FILE.append=true
+handler.FILE.autoFlush=true
+handler.FILE.enabled=true
+handler.FILE.fileName=${LOGGER.DIR:/var/log/jbosseap}/${LOGGER.APP_NAME:log4-sample}/${LOGGER.APP_NAME:log4-sample}.log
+ 
+# The formatter to use
+formatter.PATTERN=org.jboss.logmanager.formatters.PatternFormatter
+formatter.PATTERN.properties=pattern
+formatter.PATTERN.constructorProperties=pattern
+formatter.PATTERN.pattern=%d %-5p %c: %m%n
 ```
