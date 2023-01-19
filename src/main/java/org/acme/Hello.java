@@ -25,11 +25,11 @@ public class Hello extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		LOGGER.debug("Este é um exemplo de DEBUG");
-		LOGGER.error("Este é um exemplo de ERROR");
-		LOGGER.info("Este é um exemplo de INFO");
-		LOGGER.warn("Este é um exemplo de WARN");
-		LOGGER.trace("Este é um exemplo de TRACE");
+		LOGGER.debug("This is an example of a DEBUG log!");
+		LOGGER.error("This is an example of an ERROR log!");
+		LOGGER.info("This is an example of an INFO log!");
+		LOGGER.warn("This is an example of a WARN log!");
+		LOGGER.trace("This is an example of a TRACE log!");
 				
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
