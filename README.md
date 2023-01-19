@@ -161,9 +161,9 @@ public class Hello extends HttpServlet {
 
 }
 ```
-(1) Jakarta EE Servlet implementation, mapped by http://localhost:8080/jboss-logger-sample/hello.
-(2) Global object for the class to writes log file.
-(3) Examples of logs type.
+* (1) Jakarta EE Servlet implementation, mapped by http://localhost:8080/jboss-logger-sample/hello.
+* (2) Global object for the class to writes log file.
+* (3) Examples of logs type.
 
 ### File logging.properties
 Below logging.properties, witch defines application log.
